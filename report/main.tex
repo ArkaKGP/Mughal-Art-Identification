@@ -2,13 +2,11 @@
 %  MUGHAL-AUTH AI — BTP Submission Report
 %  Tectonic-compatible LaTeX (compile with: tectonic main.tex)
 %
-%  Required images (place in report/images/):
-%    fig_cover_logo.png       — IIT Kharagpur seal / logo
-%    fig_system_arch.png      — Full 3-tier system architecture diagram
-%    fig_ood_gate.png         — OOD miniature gate flowchart
-%    fig_feature_fusion.png   — Dual-branch 1632-d feature fusion diagram
-%    fig_multihead.png        — Multi-head classifier architecture diagram
-%    fig_data_flow.png        — End-to-end command & data flow diagram
+%  All 5 architecture & data-flow diagrams are drawn natively
+%  in vector LaTeX (TikZ) — zero external diagram files needed.
+%
+%  Place your UI screenshots in report/images/:
+%    fig_cover_logo.png       — IIT Kharagpur seal (already included)
 %    fig_ui_home.png          — Screenshot: Home page / image uploader
 %    fig_ui_verdict.png       — Screenshot: Verdict banner (Mughal YES)
 %    fig_ui_multihead.png     — Screenshot: Multi-head classification cards
@@ -73,10 +71,13 @@
   {\color{PurpleHead}\normalsize\itshape\bfseries}
   {\thesubsubsection}{1em}{}
 
-% Graphics
+% Graphics & TikZ Vector Diagrams
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, fit, backgrounds, calc}
+
 \captionsetup{
   font=small,
   labelfont={bf,color=MughalGreen},
@@ -85,6 +86,23 @@
   skip=6pt
 }
 \graphicspath{{images/}}
+
+% Macro: render screenshot if present in images/, else clean placeholder box
+\newcommand{\screenshotorplaceholder}[1]{%
+  \IfFileExists{images/#1.png}{%
+    \includegraphics[width=\linewidth]{#1}%
+  }{%
+    \fcolorbox{MughalGreen}{IvoryWhite}{%
+      \parbox{0.94\linewidth}{%
+        \centering\vspace{1.4cm}
+        {\large\bfseries\color{MughalGreen}[ Screenshot Placeholder ]}\\[0.25cm]
+        {\small\texttt{images/#1.png}}\\[0.15cm]
+        {\footnotesize\color{MutedGray}Save the corresponding frontend screenshot at the path above and recompile with \texttt{tectonic main.tex}.}
+        \vspace{1.4cm}
+      }%
+    }%
+  }%
+}
 
 % Tables
 \usepackage{booktabs}
@@ -409,8 +427,58 @@ The inference pipeline follows seven deterministic stages applied sequentially t
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_system_arch}
-  \caption{Three-tier system architecture: React~19 frontend portal, Express.js orchestration backend, and PyTorch/Computer Vision inference engine. Arrows show control flow and JSON data payloads.}
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[
+    node distance=0.8cm and 0.9cm,
+    font=\sffamily\small,
+    box/.style={draw, rounded corners=4pt, align=center, minimum height=0.85cm, inner sep=5pt, line width=0.8pt},
+    fe/.style={box, fill=MughalGreen!10, draw=MughalGreen, text=ObsidianBlue},
+    be/.style={box, fill=SoftBlue!10, draw=SoftBlue, text=ObsidianBlue},
+    ml/.style={box, fill=ImperialGold!14, draw=ImperialGold, text=ObsidianBlue},
+    ood/.style={box, fill=AccentRed!10, draw=AccentRed, text=AccentRed},
+    arr/.style={-{Stealth[length=5pt]}, thick, color=ObsidianBlue}
+  ]
+    % Frontend Tier
+    \node[fe, text width=3.4cm] (ui) {\textbf{ImageUploader \& SampleGallery}\\{\scriptsize Drag-drop, MIME/25MB check}};
+    \node[fe, below=0.55cm of ui, text width=3.4cm] (api) {\textbf{services/api.js}\\{\scriptsize REST Client (\texttt{VITE\_API\_URL})}};
+    \node[fe, below=0.55cm of api, text width=3.4cm] (views) {\textbf{Results Dashboard}\\{\scriptsize Verdict, MultiHead, Reasoning, Telemetry}};
+    \node[fe, below=0.55cm of views, text width=3.4cm] (hist) {\textbf{History \& Review}\\{\scriptsize HistoryDrawer, ExpertReviewModal}};
+
+    % Backend Tier
+    \node[be, right=1.3cm of ui, text width=3.6cm] (routes) {\textbf{Express REST Routes}\\{\scriptsize \texttt{/predict}, \texttt{/samples}, \texttt{/history}, \texttt{/feedback}}};
+    \node[be, below=0.55cm of routes, text width=3.6cm] (multer) {\textbf{Multer Disk Storage}\\{\scriptsize \texttt{backend/uploads/} (25\,MB)}};
+    \node[be, below=0.55cm of multer, text width=3.6cm] (bridge) {\textbf{Node-Python Bridge}\\{\scriptsize \texttt{ml\_bridge/runner.js} (or \texttt{runner1.js})}};
+    \node[be, below=0.55cm of bridge, text width=3.6cm] (store) {\textbf{Dual Persistence}\\{\scriptsize MongoDB + \texttt{localStore.js}}};
+
+    % ML Tier
+    \node[ood, right=1.3cm of routes, text width=3.8cm] (ood) {\textbf{Stage 1: OOD Gate}\\{\scriptsize ViT-B/16 k-NN ($\bar{s} \ge 0.22$)}};
+    \node[ml, below=0.55cm of ood, text width=3.8cm] (fusion) {\textbf{Stages 2--4: Fusion}\\{\scriptsize Preprocess + YOLO-World + 1,632-d}};
+    \node[ml, below=0.55cm of fusion, text width=3.8cm] (heads) {\textbf{Stages 5--6: Classifier}\\{\scriptsize 4 Heads + Temp.\ Scaling}};
+    \node[ml, below=0.55cm of heads, text width=3.8cm] (vlm) {\textbf{Stage 7: Synthesis}\\{\scriptsize Telemetry + Qwen 2.5-VL Judge}};
+
+    % Group backgrounds
+    \begin{scope}[on background layer]
+      \node[draw=MughalGreen, dashed, rounded corners=6pt, fill=MughalGreen!3, fit=(ui)(api)(views)(hist), label={[font=\sffamily\bfseries\footnotesize, color=MughalGreen]above:Frontend (React 19 + Vite)}] {};
+      \node[draw=SoftBlue, dashed, rounded corners=6pt, fill=SoftBlue!3, fit=(routes)(multer)(bridge)(store), label={[font=\sffamily\bfseries\footnotesize, color=SoftBlue]above:Backend (Node.js + Express)}] {};
+      \node[draw=ImperialGold, dashed, rounded corners=6pt, fill=ImperialGold!4, fit=(ood)(fusion)(heads)(vlm), label={[font=\sffamily\bfseries\footnotesize, color=ImperialGold]above:ML Engine (Python + PyTorch)}] {};
+    \end{scope}
+
+    % Arrows
+    \draw[arr] (ui) -- (api);
+    \draw[arr] (api.east) -- ++(0.45,0) |- (routes.west);
+    \draw[arr] (routes) -- (multer);
+    \draw[arr] (multer) -- (bridge);
+    \draw[arr] (bridge.east) -- ++(0.45,0) |- (ood.west);
+    \draw[arr] (ood) -- node[right, font=\scriptsize, color=MughalGreen]{Pass} (fusion);
+    \draw[arr] (fusion) -- (heads);
+    \draw[arr] (heads) -- (vlm);
+    \draw[arr] (vlm.west) -- ++(-0.55,0) |- (store.east);
+    \draw[arr] (store.west) -- ++(-0.45,0) |- (views.east);
+    \draw[arr] (views) -- (hist);
+    \draw[arr, dashed, color=AccentRed] (ood.north west) -- ++(-0.25,0.2) -| node[pos=0.25, above, font=\scriptsize, color=AccentRed]{Reject ($\bar{s}<0.22$)} (routes.north east);
+  \end{tikzpicture}%
+  }
+  \caption{Three-tier system architecture: React~19 frontend portal, Express.js orchestration backend, and PyTorch/Computer Vision inference engine.}
   \label{fig:sysarch}
 \end{figure}
 
@@ -418,7 +486,34 @@ The inference pipeline follows seven deterministic stages applied sequentially t
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.82\linewidth]{fig_ood_gate}
+  \resizebox{0.92\linewidth}{!}{%
+  \begin{tikzpicture}[
+    node distance=0.65cm and 1.1cm,
+    font=\sffamily\small,
+    blk/.style={draw=SoftBlue, fill=SoftBlue!8, rounded corners=4pt, align=center, minimum height=0.8cm, inner sep=6pt, line width=0.8pt},
+    dec/.style={diamond, aspect=2.3, draw=ImperialGold, fill=ImperialGold!12, align=center, inner sep=2pt, line width=0.9pt},
+    rej/.style={draw=AccentRed, fill=AccentRed!10, rounded corners=4pt, align=center, inner sep=6pt, line width=0.9pt, text=AccentRed},
+    pas/.style={draw=MughalGreen, fill=MughalGreen!10, rounded corners=4pt, align=center, inner sep=6pt, line width=0.9pt, text=MughalGreen},
+    arr/.style={-{Stealth[length=5pt]}, thick, color=ObsidianBlue}
+  ]
+    \node[blk] (img) {\textbf{Input Image (RGB)}};
+    \node[blk, below=of img] (vit) {\textbf{Frozen ViT-B/16 Global Embedding}\\{\scriptsize 768-d, $\ell_2$-Normalised \texttt{[CLS]} Token}};
+    \node[blk, right=of vit, text width=4.4cm] (cache) {\textbf{Cached Train Embeddings}\\{\scriptsize 395 paintings (\texttt{embeddings\_train\_vit\_b\_16.npz})}};
+    \node[blk, below=of vit] (sim) {\textbf{Cosine Similarity Matrix Multiply} $\mathbf{E}_{\text{train}}\hat{\mathbf{e}}_{\text{query}}$};
+    \node[blk, below=of sim] (topk) {\textbf{Top-$k$ Mean Similarity} ($k=5$)};
+    \node[dec, below=0.75cm of topk] (gate) {\scriptsize $\bar{s} \ge 0.22$?};
+    \node[rej, below left=0.8cm and 0.9cm of gate, text width=4.6cm] (reject) {\textbf{Immediate Gate Rejection}\\{\scriptsize \texttt{REJECTED: NOT AN INDIAN MINIATURE}}};
+    \node[pas, below right=0.8cm and 0.9cm of gate, text width=4.6cm] (pass) {\textbf{Proceed to Classification}\\{\scriptsize Typical miniature: $\bar{s} \in [0.31, 0.70]$}};
+
+    \draw[arr] (img) -- (vit);
+    \draw[arr] (vit) -- (sim);
+    \draw[arr] (cache) |- (sim);
+    \draw[arr] (sim) -- (topk);
+    \draw[arr] (topk) -- (gate);
+    \draw[arr, color=AccentRed] (gate) -| node[above left, font=\scriptsize\bfseries]{FAIL ($\bar{s} < 0.22$)} (reject);
+    \draw[arr, color=MughalGreen] (gate) -| node[above right, font=\scriptsize\bfseries]{PASS ($\bar{s} \ge 0.22$)} (pass);
+  \end{tikzpicture}%
+  }
   \caption{OOD miniature gate: cosine similarity against the training corpus embedding matrix determines whether the input proceeds to classification.}
   \label{fig:ood}
 \end{figure}
@@ -473,7 +568,31 @@ Per-class global non-maximum suppression (IoU $= 0.40$) aggregates detections ac
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_feature_fusion}
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[
+    node distance=0.6cm and 0.9cm,
+    font=\sffamily\small,
+    inb/.style={draw=ObsidianBlue, fill=IvoryWhite, rounded corners=4pt, align=center, inner sep=6pt, line width=0.8pt},
+    b1/.style={draw=SoftBlue, fill=SoftBlue!10, rounded corners=4pt, align=center, inner sep=6pt, line width=0.8pt, text width=4.4cm},
+    b2/.style={draw=PurpleHead, fill=PurpleHead!10, rounded corners=4pt, align=center, inner sep=6pt, line width=0.8pt, text width=4.4cm},
+    b3/.style={draw=ImperialGold, fill=ImperialGold!12, rounded corners=4pt, align=center, inner sep=6pt, line width=0.8pt, text width=4.4cm},
+    cat/.style={draw=MughalGreen, fill=MughalGreen!14, rounded corners=5pt, align=center, inner sep=8pt, line width=1.1pt, text width=3.4cm},
+    arr/.style={-{Stealth[length=5pt]}, thick, color=ObsidianBlue}
+  ]
+    \node[inb] (canvas) {\textbf{Input Canvas}\\{\scriptsize (RGB Image)}};
+    \node[b2, right=1.1cm of canvas] (br2) {\textbf{Branch 2: Motif Region Pool}\\{\scriptsize $\le 6$ YOLO-World Crops $\rightarrow$ ViT-B/16 Mean Pool}\\{\scriptsize \textbf{768-d} ($\ell_2$-Normalised; zero-filled if empty)}};
+    \node[b1, above=0.45cm of br2] (br1) {\textbf{Branch 1: Global ViT-B/16}\\{\scriptsize $224\times224$ Bicubic $\rightarrow$ Frozen \texttt{[CLS]}}\\{\scriptsize \textbf{768-d} ($\ell_2$-Normalised)}};
+    \node[b3, below=0.45cm of br2] (br3) {\textbf{Branch 3: Handcrafted (96-d)}\\{\scriptsize Colour (40) + Texture (31) + Stroke (12) + Layout (13)}\\{\scriptsize \textbf{96-d} ($\ell_2$-Normalised)}};
+    \node[cat, right=1.1cm of br2] (concat) {\textbf{Concatenate}\\[0.1cm]{\normalsize\bfseries\color{MughalGreen} 1,632-d}\\{\scriptsize Unified Fused Vector}};
+
+    \draw[arr] (canvas.east) -- ++(0.35,0) |- (br1.west);
+    \draw[arr] (canvas.east) -- (br2.west);
+    \draw[arr] (canvas.east) -- ++(0.35,0) |- (br3.west);
+    \draw[arr] (br1.east) -- ++(0.35,0) |- (concat.west);
+    \draw[arr] (br2.east) -- (concat.west);
+    \draw[arr] (br3.east) -- ++(0.35,0) |- (concat.west);
+  \end{tikzpicture}%
+  }
   \caption{Dual-branch 1,632-dimensional feature fusion pipeline: global ViT-B/16 embedding (768-d), region-pooled motif-crop embedding (768-d), and 96 handcrafted art-historical descriptors. Each branch is independently ${\ell_2}$-normalised before concatenation.}
   \label{fig:fusion}
 \end{figure}
@@ -523,7 +642,41 @@ Up to 6 YOLO-World motif crops are individually embedded by the same frozen ViT-
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_multihead}
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[
+    node distance=0.5cm and 0.65cm,
+    font=\sffamily\small,
+    blk/.style={draw=SoftBlue, fill=SoftBlue!8, rounded corners=4pt, align=center, inner sep=5pt, line width=0.8pt},
+    trk/.style={draw=PurpleHead, fill=PurpleHead!10, rounded corners=4pt, align=center, inner sep=5pt, line width=0.8pt, text width=7.2cm},
+    hd/.style={draw=ImperialGold, fill=ImperialGold!12, rounded corners=4pt, align=center, inner sep=5pt, line width=0.8pt, text width=2.8cm},
+    cal/.style={draw=MughalGreen, fill=MughalGreen!12, rounded corners=4pt, align=center, inner sep=6pt, line width=1pt, text width=11.5cm},
+    arr/.style={-{Stealth[length=5pt]}, thick, color=ObsidianBlue}
+  ]
+    \node[blk, text width=7.2cm] (in) {\textbf{1,632-d Fused Feature Vector} $\mathbf{f}$};
+    \node[blk, below=0.45cm of in, text width=7.2cm] (std) {\textbf{Checkpoint Standardization}: $(\mathbf{f} - \boldsymbol{\mu}) / \boldsymbol{\sigma}$ {\scriptsize (Registered Buffers)}};
+    \node[trk, below=0.45cm of std] (t1) {\textbf{Shared Trunk 1}: $\text{Linear}(1632 \to 128) \to \text{LayerNorm} \to \text{GELU} \to \text{Dropout}(0.5)$};
+    \node[trk, below=0.45cm of t1] (t2) {\textbf{Shared Trunk 2}: $\text{Linear}(128 \to 64) \to \text{LayerNorm} \to \text{GELU} \to \text{Dropout}(0.5)$};
+
+    \node[hd, below=0.7cm of t2, xshift=-4.75cm] (h1) {\textbf{School Head}\\{\scriptsize $64 \to 32 \to 3$}};
+    \node[hd, right=0.35cm of h1] (h2) {\textbf{Period Head}\\{\scriptsize $64 \to 32 \to 6$}};
+    \node[hd, right=0.35cm of h2] (h3) {\textbf{Raga Head}\\{\scriptsize $64 \to 32 \to C_r$}};
+    \node[hd, right=0.35cm of h3] (h4) {\textbf{Artist Head}\\{\scriptsize $64 \to 32 \to C_a$}};
+
+    \node[cal, below=0.65cm of h2, xshift=1.6cm] (ts) {\textbf{Per-Head Temperature Scaling} ($\mathbf{z}_h / T_h$) $\longrightarrow$ \textbf{Calibrated Softmax Probabilities}};
+
+    \draw[arr] (in) -- (std);
+    \draw[arr] (std) -- (t1);
+    \draw[arr] (t1) -- (t2);
+    \draw[arr] (t2.south) -- ++(0,-0.25) -| (h1.north);
+    \draw[arr] (t2.south) -- ++(0,-0.25) -| (h2.north);
+    \draw[arr] (t2.south) -- ++(0,-0.25) -| (h3.north);
+    \draw[arr] (t2.south) -- ++(0,-0.25) -| (h4.north);
+    \draw[arr] (h1.south) -- (h1.south |- ts.north);
+    \draw[arr] (h2.south) -- (h2.south |- ts.north);
+    \draw[arr] (h3.south) -- (h3.south |- ts.north);
+    \draw[arr] (h4.south) -- (h4.south |- ts.north);
+  \end{tikzpicture}%
+  }
   \caption{Multi-head classifier architecture: a shared two-layer trunk processes the 1,632-d input, then four task-specific heads produce logits for School, Period, Raga, and Artist classification.}
   \label{fig:multihead}
 \end{figure}
@@ -613,7 +766,31 @@ The central architectural challenge is bridging a JavaScript runtime to a PyTorc
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_data_flow}
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[
+    node distance=0.55cm and 0.6cm,
+    font=\sffamily\footnotesize,
+    stepbox/.style={draw=ObsidianBlue, fill=white, rounded corners=4pt, align=center, inner sep=5pt, minimum height=0.85cm, line width=0.8pt},
+    arr/.style={-{Stealth[length=5pt]}, thick, color=MughalGreen}
+  ]
+    \node[stepbox, fill=MughalGreen!10, draw=MughalGreen, text width=2.4cm] (s1) {\textbf{1. User Upload}\\{\scriptsize Drag-drop / Sample\\MIME \& 25\,MB check}};
+    \node[stepbox, fill=MughalGreen!10, draw=MughalGreen, right=of s1, text width=2.4cm] (s2) {\textbf{2. \texttt{api.js}}\\{\scriptsize \texttt{FormData} POST\\\texttt{/api/predict}}};
+    \node[stepbox, fill=SoftBlue!10, draw=SoftBlue, right=of s2, text width=2.5cm] (s3) {\textbf{3. Express + Multer}\\{\scriptsize Save \texttt{uploads/}\\Call \texttt{runInference()}}};
+    \node[stepbox, fill=SoftBlue!10, draw=SoftBlue, right=of s3, text width=2.6cm] (s4) {\textbf{4. ML Bridge}\\{\scriptsize Spawn \texttt{predict.py}\\or Gradio Client}};
+    \node[stepbox, fill=ImperialGold!12, draw=ImperialGold, below=0.85cm of s4, text width=2.6cm] (s5) {\textbf{5. OOD Gate}\\{\scriptsize ViT-B/16 k-NN\\Reject if $\bar{s} < 0.22$}};
+    \node[stepbox, fill=ImperialGold!12, draw=ImperialGold, left=of s5, text width=2.5cm] (s6) {\textbf{6. Fusion + Heads}\\{\scriptsize 1,632-d + 4 Heads\\+ Temp.\ Scaling}};
+    \node[stepbox, fill=SoftBlue!10, draw=SoftBlue, left=of s6, text width=2.4cm] (s7) {\textbf{7. Persist \& HTTP 200}\\{\scriptsize \texttt{localStore} + Mongo\\(or HTTP 503 fail)}};
+    \node[stepbox, fill=MughalGreen!10, draw=MughalGreen, left=of s7, text width=2.4cm] (s8) {\textbf{8. React Render}\\{\scriptsize Verdict, MultiHead,\\Reasoning, Motifs}};
+
+    \draw[arr] (s1) -- (s2);
+    \draw[arr] (s2) -- (s3);
+    \draw[arr] (s3) -- (s4);
+    \draw[arr] (s4) -- (s5);
+    \draw[arr] (s5) -- (s6);
+    \draw[arr] (s6) -- (s7);
+    \draw[arr] (s7) -- (s8);
+  \end{tikzpicture}%
+  }
   \caption{End-to-end command and data flow: from user image upload through the Express API, the Node-to-Python subprocess bridge, the seven-stage ML pipeline, to the structured JSON response rendered across frontend components.}
   \label{fig:dataflow}
 \end{figure}
@@ -738,7 +915,7 @@ Sticky \texttt{backdrop-blur-md} navigation bar rendering the project logo, an \
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_ui_home}
+  \screenshotorplaceholder{fig_ui_home}
   \caption{Home page showing the navigation bar, hero statistics strip, drag-and-drop image uploader, and curated sample gallery. The Day Theme (Ivory Parchment and Mughal Green) is active.}
   \label{fig:uihome}
 \end{figure}
@@ -763,7 +940,7 @@ The primary authentication result display, implemented in three distinct visual 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_ui_verdict}
+  \screenshotorplaceholder{fig_ui_verdict}
   \caption{VerdictBanner in Mughal-confirmed state: green-gold banner, VERDICT: YES stamp, calibrated confidence bar. The confetti celebration fires when confidence exceeds 80\%.}
   \label{fig:uiverdict}
 \end{figure}
@@ -773,7 +950,7 @@ A 2$\times$2 grid rendering one card per classification head (Artistic School, H
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_ui_multihead}
+  \screenshotorplaceholder{fig_ui_multihead}
   \caption{MultiHeadCards: four classification heads rendered as probability distribution cards. Temperature-calibrated confidence values are shown beneath each top prediction.}
   \label{fig:uimultihead}
 \end{figure}
@@ -783,7 +960,7 @@ Renders the Multimodal LLM Reasoning panel from \texttt{result.llm\_reasoning}: 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_ui_reasoning}
+  \screenshotorplaceholder{fig_ui_reasoning}
   \caption{Art-Historian Reasoning panel showing the consensus badge, synthesised prose reasoning, stylistic observations, and epoch markers panels.}
   \label{fig:uireasoning}
 \end{figure}
@@ -793,7 +970,7 @@ Displays four scalar telemetry tiles (Gold Leaf Index, Mineral Red Index, Canvas
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_ui_features}
+  \screenshotorplaceholder{fig_ui_features}
   \caption{VisualFeaturesCard: pigment telemetry tiles and YOLO-World detected motif pills with per-object confidence percentages.}
   \label{fig:uifeatures}
 \end{figure}
@@ -806,7 +983,7 @@ Slide-over right drawer querying \texttt{GET /api/history} on open. Lists past a
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{fig_ui_history}
+  \screenshotorplaceholder{fig_ui_history}
   \caption{HistoryDrawer open: past analyses listed with verdict pills, confidence values, and thumbnail previews. Clicking any entry restores the full dashboard.}
   \label{fig:uihistory}
 \end{figure}
