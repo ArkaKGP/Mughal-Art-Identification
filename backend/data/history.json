@@ -4782,5 +4782,822 @@
       "focal_offset_y": 0.065,
       "texture_entropy": 2.84
     }
+  },
+  {
+    "id": "analysis_1793106539081_rhz8y",
+    "createdAt": "2026-10-27T13:08:59.081Z",
+    "filename": "1115339_1793106531624.jpg",
+    "originalName": "1115339.jpg",
+    "imageUrl": "/uploads/1115339_1793106531624.jpg",
+    "is_miniature": true,
+    "is_mughal": true,
+    "verdict": "AUTHENTIC MUGHAL MINIATURE",
+    "confidence": 97.55,
+    "gate_score": 0.438,
+    "school": {
+      "value": "Mughal",
+      "confidence": 97.55,
+      "probabilities": {
+        "Mughal": 97.55,
+        "Rajasthani": 2.45
+      }
+    },
+    "period": {
+      "value": "Classical Mughal (16th-17th Century)",
+      "confidence": 84.66,
+      "probabilities": {
+        "Akbar Period (c. 1556-1605)": 1.35,
+        "Aurangzeb Period (c. 1658-1707)": 2.59,
+        "Classical Mughal (16th-17th Century)": 84.66,
+        "Jahangir Period (c. 1605-1627)": 8.72,
+        "Late Mughal / 18th Century": 1.61,
+        "Shah Jahan Period (c. 1628-1658)": 1.07
+      }
+    },
+    "raga": {
+      "value": "Non-Ragamala",
+      "confidence": 99.49,
+      "probabilities": {
+        "Non-Ragamala": 99.49,
+        "Ragamala (Other)": 0.12,
+        "Ragamala (Unspecified)": 0.26,
+        "Shri Raga/Ragini": 0.14
+      }
+    },
+    "artist": {
+      "value": "Unknown",
+      "confidence": 100,
+      "probabilities": {
+        "Unknown": 100,
+        "Ustad Mansur": 0
+      }
+    },
+    "visual_metrics": {
+      "gold_pigment_index": 13.97,
+      "mineral_red_index": 1.07,
+      "horizontal_symmetry": 0.881,
+      "vertical_symmetry": 0.761,
+      "focal_offset_x": -0.005,
+      "focal_offset_y": -0.089,
+      "texture_entropy": 3.07
+    }
+  },
+  {
+    "id": "analysis_1793127599357_uoui3",
+    "createdAt": "2026-10-27T18:59:59.357Z",
+    "filename": "adolf-hitler-in-color_1793127539019.webp",
+    "originalName": "adolf-hitler-in-color.webp",
+    "imageUrl": "/uploads/adolf-hitler-in-color_1793127539019.webp",
+    "is_miniature": false,
+    "verdict": "REJECTED: NOT AN INDIAN MINIATURE",
+    "is_mughal": false,
+    "confidence": 0,
+    "gate_score": 0.118,
+    "rejection_reason": "Image is Out-of-Distribution. Nearest-painting similarity (0.118) is below threshold (0.22). Not an Indian miniature painting.",
+    "school": {
+      "value": "Non-Miniature",
+      "confidence": 0,
+      "probabilities": {
+        "Mughal": 0,
+        "Rajasthani": 0,
+        "Pahari": 0
+      },
+      "evidence": [
+        "Image failed Out-Of-Distribution validation.",
+        "Image is Out-of-Distribution. Nearest-painting similarity (0.118) is below threshold (0.22). Not an Indian miniature painting."
+      ]
+    },
+    "period": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "raga": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "artist": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "visual_features": {
+      "gold_pigment_index": 15.71,
+      "mineral_red_index": 2.22,
+      "horizontal_symmetry": 0.816,
+      "vertical_symmetry": 0.677,
+      "focal_offset_x": 0.017,
+      "focal_offset_y": -0.087,
+      "texture_entropy": 1.99
+    },
+    "detected_motifs": [],
+    "llm_reasoning": {
+      "synthesis_rationale": "Out-of-Distribution Gate Rejection: The analyzed image achieved a similarity score of 0.118 against the 564 historical manuscript benchmark dataset, which is well below the authentication threshold of 0.22. This image is not recognized as an authentic Indian miniature painting.",
+      "stylistic_evidence": [
+        "Visual composition, lighting, and pigment profile do not conform to historical manuscript traditions."
+      ],
+      "iconographic_evidence": [
+        "Absence of classical Ragamala, Akbarnama, or Padshahnama iconography."
+      ],
+      "historical_evidence": [
+        "Specimen does not belong to any known Mughal, Rajasthani, or Pahari atelier."
+      ],
+      "cross_check": {
+        "agrees_with_classifiers": false,
+        "route_to_expert_review": false,
+        "review_reason": "Image automatically rejected by Out-Of-Distribution Gate."
+      }
+    }
+  },
+  {
+    "id": "analysis_1793127636483_oja03",
+    "createdAt": "2026-10-27T19:00:36.484Z",
+    "filename": "Gemini_Generated_Image_pvk9nmpvk9nmpvk9_1793127614029.png",
+    "originalName": "Gemini_Generated_Image_pvk9nmpvk9nmpvk9.png",
+    "imageUrl": "/uploads/Gemini_Generated_Image_pvk9nmpvk9nmpvk9_1793127614029.png",
+    "is_miniature": false,
+    "verdict": "REJECTED: NOT AN INDIAN MINIATURE",
+    "is_mughal": false,
+    "confidence": 0,
+    "gate_score": 0.216,
+    "rejection_reason": "Image is Out-of-Distribution. Nearest-painting similarity (0.216) is below threshold (0.22). Not an Indian miniature painting.",
+    "school": {
+      "value": "Non-Miniature",
+      "confidence": 0,
+      "probabilities": {
+        "Mughal": 0,
+        "Rajasthani": 0,
+        "Pahari": 0
+      },
+      "evidence": [
+        "Image failed Out-Of-Distribution validation.",
+        "Image is Out-of-Distribution. Nearest-painting similarity (0.216) is below threshold (0.22). Not an Indian miniature painting."
+      ]
+    },
+    "period": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "raga": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "artist": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "visual_features": {
+      "gold_pigment_index": 3.94,
+      "mineral_red_index": 3.87,
+      "horizontal_symmetry": 0.964,
+      "vertical_symmetry": 0.848,
+      "focal_offset_x": 0,
+      "focal_offset_y": -0.012,
+      "texture_entropy": 3.1
+    },
+    "detected_motifs": [],
+    "llm_reasoning": {
+      "synthesis_rationale": "Out-of-Distribution Gate Rejection: The analyzed image achieved a similarity score of 0.216 against the 564 historical manuscript benchmark dataset, which is well below the authentication threshold of 0.22. This image is not recognized as an authentic Indian miniature painting.",
+      "stylistic_evidence": [
+        "Visual composition, lighting, and pigment profile do not conform to historical manuscript traditions."
+      ],
+      "iconographic_evidence": [
+        "Absence of classical Ragamala, Akbarnama, or Padshahnama iconography."
+      ],
+      "historical_evidence": [
+        "Specimen does not belong to any known Mughal, Rajasthani, or Pahari atelier."
+      ],
+      "cross_check": {
+        "agrees_with_classifiers": false,
+        "route_to_expert_review": false,
+        "review_reason": "Image automatically rejected by Out-Of-Distribution Gate."
+      }
+    }
+  },
+  {
+    "id": "analysis_1793127792688_n25hz",
+    "createdAt": "2026-10-27T19:03:12.689Z",
+    "filename": "shrinathji-miniature-painting-nathdwara-rajasthan-india-CE68PK-684x1024_1793127731874.jpg",
+    "originalName": "shrinathji-miniature-painting-nathdwara-rajasthan-india-CE68PK-684x1024.jpg",
+    "imageUrl": "/uploads/shrinathji-miniature-painting-nathdwara-rajasthan-india-CE68PK-684x1024_1793127731874.jpg",
+    "is_miniature": true,
+    "verdict": "YES, MUGHAL MINIATURE",
+    "is_mughal": true,
+    "confidence": 71.5,
+    "gate_score": 0.478,
+    "school": {
+      "value": "Mughal",
+      "confidence": 71.5,
+      "probabilities": {
+        "Mughal": 0.7146999835968018,
+        "Rajasthani": 0.28529998660087585
+      },
+      "evidence": [
+        "Delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume.",
+        "Atmospheric depth and Persian-influenced landscape registers with rocky crags and soft distant foliage.",
+        "Application of authentic gold illumination (detected pigment density: 16.56%).",
+        "Naturalistic drapery folds and individual portraiture contrasting with folk abstraction."
+      ]
+    },
+    "period": {
+      "value": "Classical Mughal (16th-17th Century)",
+      "confidence": 48.3,
+      "probabilities": {
+        "Akbar Period (c. 1556-1605)": 0.05290000140666962,
+        "Aurangzeb Period (c. 1658-1707)": 0.03400000184774399,
+        "Classical Mughal (16th-17th Century)": 0.48330000042915344,
+        "Jahangir Period (c. 1605-1627)": 0.20440000295639038,
+        "Late Mughal / 18th Century": 0.20990000665187836,
+        "Shah Jahan Period (c. 1628-1658)": 0.015599999576807022
+      },
+      "evidence": [
+        "Multi-head period classifier attributes composition to Classical Mughal (16th-17th Century) (48.3% confidence).",
+        "Standard imperial court workshop layout with classical miniature proportions."
+      ]
+    },
+    "raga": {
+      "value": "Non-Ragamala",
+      "confidence": 66.5,
+      "probabilities": {
+        "Non-Ragamala": 0.664900004863739,
+        "Ragamala (Other)": 0.03550000116229057,
+        "Ragamala (Unspecified)": 0.24959999322891235,
+        "Shri Raga/Ragini": 0.05009999871253967
+      },
+      "evidence": [
+        "Secular court scene or narrative historical chronicle rather than musical iconography.",
+        "Absence of Dhyana musical emblems (such as Nayika with veena, peacocks, or deer)."
+      ]
+    },
+    "artist": {
+      "value": "Unknown",
+      "confidence": 100,
+      "probabilities": {
+        "Unknown": 1,
+        "Ustad Mansur": 0
+      },
+      "evidence": [
+        "Attributed to Unknown (100.0% confidence). Note: High uncertainty due to sparse individual artist signatures."
+      ]
+    },
+    "visual_features": {
+      "gold_pigment_index": 16.56,
+      "mineral_red_index": 5.6,
+      "horizontal_symmetry": 0.803,
+      "vertical_symmetry": 0.75,
+      "focal_offset_x": -0.012,
+      "focal_offset_y": -0.038,
+      "texture_entropy": 3.65
+    },
+    "detected_motifs": [
+      {
+        "label": "turban",
+        "confidence": 0.23,
+        "bbox": [
+          0.413,
+          0.232,
+          0.562,
+          0.3
+        ]
+      }
+    ],
+    "llm_reasoning": {
+      "synthesis_rationale": "Based on calibrated multi-head visual embeddings, this painting is classified as Mughal (71.5% confidence). The rendering displays delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume. Combined with an estimated period attribution to Classical Mughal (16th-17th Century) (calibrated confidence: 48.3%), the visual evidence supports its authenticity within the imperial miniature corpus.",
+      "stylistic_evidence": [
+        "Delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume.",
+        "Atmospheric depth and Persian-influenced landscape registers with rocky crags and soft distant foliage.",
+        "Application of authentic gold illumination (detected pigment density: 16.56%).",
+        "Naturalistic drapery folds and individual portraiture contrasting with folk abstraction."
+      ],
+      "iconographic_evidence": [
+        "Secular court scene or narrative historical chronicle rather than musical iconography.",
+        "Absence of Dhyana musical emblems (such as Nayika with veena, peacocks, or deer)."
+      ],
+      "historical_evidence": [
+        "Multi-head period classifier attributes composition to Classical Mughal (16th-17th Century) (48.3% confidence).",
+        "Standard imperial court workshop layout with classical miniature proportions."
+      ],
+      "cross_check": {
+        "agrees_with_classifiers": true,
+        "route_to_expert_review": true,
+        "review_reason": "Borderline school confidence; human review recommended"
+      }
+    }
+  },
+  {
+    "id": "analysis_1793129342247_ss4ex",
+    "createdAt": "2026-10-27T19:29:02.247Z",
+    "filename": "shrinathji-miniature-painting-nathdwara-rajasthan-india-CE68PK-684x1024_1793129295510.jpg",
+    "originalName": "shrinathji-miniature-painting-nathdwara-rajasthan-india-CE68PK-684x1024.jpg",
+    "imageUrl": "/uploads/shrinathji-miniature-painting-nathdwara-rajasthan-india-CE68PK-684x1024_1793129295510.jpg",
+    "is_miniature": true,
+    "verdict": "YES, MUGHAL MINIATURE",
+    "is_mughal": true,
+    "confidence": 71.5,
+    "gate_score": 0.478,
+    "school": {
+      "value": "Mughal",
+      "confidence": 71.5,
+      "probabilities": {
+        "Mughal": 0.7146999835968018,
+        "Rajasthani": 0.28529998660087585
+      },
+      "evidence": [
+        "Delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume.",
+        "Atmospheric depth and Persian-influenced landscape registers with rocky crags and soft distant foliage.",
+        "Application of authentic gold illumination (detected pigment density: 16.56%).",
+        "Naturalistic drapery folds and individual portraiture contrasting with folk abstraction."
+      ]
+    },
+    "period": {
+      "value": "Classical Mughal (16th-17th Century)",
+      "confidence": 48.3,
+      "probabilities": {
+        "Akbar Period (c. 1556-1605)": 0.05290000140666962,
+        "Aurangzeb Period (c. 1658-1707)": 0.03400000184774399,
+        "Classical Mughal (16th-17th Century)": 0.48330000042915344,
+        "Jahangir Period (c. 1605-1627)": 0.20440000295639038,
+        "Late Mughal / 18th Century": 0.20990000665187836,
+        "Shah Jahan Period (c. 1628-1658)": 0.015599999576807022
+      },
+      "evidence": [
+        "Multi-head period classifier attributes composition to Classical Mughal (16th-17th Century) (48.3% confidence).",
+        "Standard imperial court workshop layout with classical miniature proportions."
+      ]
+    },
+    "raga": {
+      "value": "Non-Ragamala",
+      "confidence": 66.5,
+      "probabilities": {
+        "Non-Ragamala": 0.664900004863739,
+        "Ragamala (Other)": 0.03550000116229057,
+        "Ragamala (Unspecified)": 0.24959999322891235,
+        "Shri Raga/Ragini": 0.05009999871253967
+      },
+      "evidence": [
+        "Secular court scene or narrative historical chronicle rather than musical iconography.",
+        "Absence of Dhyana musical emblems (such as Nayika with veena, peacocks, or deer)."
+      ]
+    },
+    "artist": {
+      "value": "Unknown",
+      "confidence": 100,
+      "probabilities": {
+        "Unknown": 1,
+        "Ustad Mansur": 0
+      },
+      "evidence": [
+        "Attributed to Unknown (100.0% confidence). Note: High uncertainty due to sparse individual artist signatures."
+      ]
+    },
+    "visual_features": {
+      "gold_pigment_index": 16.56,
+      "mineral_red_index": 5.6,
+      "horizontal_symmetry": 0.803,
+      "vertical_symmetry": 0.75,
+      "focal_offset_x": -0.012,
+      "focal_offset_y": -0.038,
+      "texture_entropy": 3.65
+    },
+    "detected_motifs": [
+      {
+        "label": "turban",
+        "confidence": 0.23,
+        "bbox": [
+          0.413,
+          0.232,
+          0.562,
+          0.3
+        ]
+      }
+    ],
+    "llm_reasoning": {
+      "synthesis_rationale": "Based on calibrated multi-head visual embeddings, this painting is classified as Mughal (71.5% confidence). The rendering displays delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume. Combined with an estimated period attribution to Classical Mughal (16th-17th Century) (calibrated confidence: 48.3%), the visual evidence supports its authenticity within the imperial miniature corpus.",
+      "stylistic_evidence": [
+        "Delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume.",
+        "Atmospheric depth and Persian-influenced landscape registers with rocky crags and soft distant foliage.",
+        "Application of authentic gold illumination (detected pigment density: 16.56%).",
+        "Naturalistic drapery folds and individual portraiture contrasting with folk abstraction."
+      ],
+      "iconographic_evidence": [
+        "Secular court scene or narrative historical chronicle rather than musical iconography.",
+        "Absence of Dhyana musical emblems (such as Nayika with veena, peacocks, or deer)."
+      ],
+      "historical_evidence": [
+        "Multi-head period classifier attributes composition to Classical Mughal (16th-17th Century) (48.3% confidence).",
+        "Standard imperial court workshop layout with classical miniature proportions."
+      ],
+      "cross_check": {
+        "agrees_with_classifiers": true,
+        "route_to_expert_review": true,
+        "review_reason": "Borderline school confidence; human review recommended"
+      }
+    }
+  },
+  {
+    "id": "analysis_1793266562054_qkd79",
+    "createdAt": "2026-10-29T09:36:02.055Z",
+    "filename": "IMG_20260522_215646815_HDR_1793266475057.jpg",
+    "originalName": "IMG_20260522_215646815_HDR.jpg",
+    "imageUrl": "/uploads/IMG_20260522_215646815_HDR_1793266475057.jpg",
+    "is_miniature": true,
+    "verdict": "YES, MUGHAL MINIATURE",
+    "is_mughal": true,
+    "confidence": 96.9,
+    "gate_score": 0.319,
+    "school": {
+      "value": "Mughal",
+      "confidence": 96.9,
+      "probabilities": {
+        "Mughal": 0.9689000248908997,
+        "Rajasthani": 0.031099999323487282
+      },
+      "evidence": [
+        "Delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume.",
+        "Atmospheric depth and Persian-influenced landscape registers with rocky crags and soft distant foliage.",
+        "Application of authentic gold illumination (detected pigment density: 13.2%).",
+        "Naturalistic drapery folds and individual portraiture contrasting with folk abstraction."
+      ]
+    },
+    "period": {
+      "value": "Classical Mughal (16th-17th Century)",
+      "confidence": 89.8,
+      "probabilities": {
+        "Akbar Period (c. 1556-1605)": 0.008500000461935997,
+        "Aurangzeb Period (c. 1658-1707)": 0.018400000408291817,
+        "Classical Mughal (16th-17th Century)": 0.8984000086784363,
+        "Jahangir Period (c. 1605-1627)": 0.0551999993622303,
+        "Late Mughal / 18th Century": 0.01119999960064888,
+        "Shah Jahan Period (c. 1628-1658)": 0.008299999870359898
+      },
+      "evidence": [
+        "Multi-head period classifier attributes composition to Classical Mughal (16th-17th Century) (89.8% confidence).",
+        "Standard imperial court workshop layout with classical miniature proportions."
+      ]
+    },
+    "raga": {
+      "value": "Non-Ragamala",
+      "confidence": 99.3,
+      "probabilities": {
+        "Non-Ragamala": 0.9929999709129333,
+        "Ragamala (Other)": 0.0017000000225380063,
+        "Ragamala (Unspecified)": 0.0031999999191612005,
+        "Shri Raga/Ragini": 0.002199999988079071
+      },
+      "evidence": [
+        "Secular court scene or narrative historical chronicle rather than musical iconography.",
+        "Absence of Dhyana musical emblems (such as Nayika with veena, peacocks, or deer)."
+      ]
+    },
+    "artist": {
+      "value": "Unknown",
+      "confidence": 100,
+      "probabilities": {
+        "Unknown": 1,
+        "Ustad Mansur": 0
+      },
+      "evidence": [
+        "Attributed to Unknown (100.0% confidence). Note: High uncertainty due to sparse individual artist signatures."
+      ]
+    },
+    "visual_features": {
+      "gold_pigment_index": 13.2,
+      "mineral_red_index": 16.62,
+      "horizontal_symmetry": 0.802,
+      "vertical_symmetry": 0.817,
+      "focal_offset_x": 0.022,
+      "focal_offset_y": 0.026,
+      "texture_entropy": 3.01
+    },
+    "detected_motifs": [
+      {
+        "label": "turban",
+        "confidence": 0.55,
+        "bbox": [
+          0.139,
+          0.001,
+          0.379,
+          0.361
+        ]
+      }
+    ],
+    "llm_reasoning": {
+      "synthesis_rationale": "Based on calibrated multi-head visual embeddings, this painting is classified as Mughal (96.9% confidence). The rendering displays delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume. Combined with an estimated period attribution to Classical Mughal (16th-17th Century) (calibrated confidence: 89.8%), the visual evidence supports its authenticity within the imperial miniature corpus.",
+      "stylistic_evidence": [
+        "Delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume.",
+        "Atmospheric depth and Persian-influenced landscape registers with rocky crags and soft distant foliage.",
+        "Application of authentic gold illumination (detected pigment density: 13.2%).",
+        "Naturalistic drapery folds and individual portraiture contrasting with folk abstraction."
+      ],
+      "iconographic_evidence": [
+        "Secular court scene or narrative historical chronicle rather than musical iconography.",
+        "Absence of Dhyana musical emblems (such as Nayika with veena, peacocks, or deer)."
+      ],
+      "historical_evidence": [
+        "Multi-head period classifier attributes composition to Classical Mughal (16th-17th Century) (89.8% confidence).",
+        "Standard imperial court workshop layout with classical miniature proportions."
+      ],
+      "cross_check": {
+        "agrees_with_classifiers": true,
+        "route_to_expert_review": false,
+        "review_reason": null
+      }
+    }
+  },
+  {
+    "id": "analysis_1793266622746_8m3bi",
+    "createdAt": "2026-10-29T09:37:02.747Z",
+    "filename": "adolf-hitler-in-color_1793266602196.webp",
+    "originalName": "adolf-hitler-in-color.webp",
+    "imageUrl": "/uploads/adolf-hitler-in-color_1793266602196.webp",
+    "is_miniature": false,
+    "verdict": "REJECTED: NOT AN INDIAN MINIATURE",
+    "is_mughal": false,
+    "confidence": 0,
+    "gate_score": 0.118,
+    "rejection_reason": "Image is Out-of-Distribution. Nearest-painting similarity (0.118) is below threshold (0.22). Not an Indian miniature painting.",
+    "school": {
+      "value": "Non-Miniature",
+      "confidence": 0,
+      "probabilities": {
+        "Mughal": 0,
+        "Rajasthani": 0,
+        "Pahari": 0
+      },
+      "evidence": [
+        "Image failed Out-Of-Distribution validation.",
+        "Image is Out-of-Distribution. Nearest-painting similarity (0.118) is below threshold (0.22). Not an Indian miniature painting."
+      ]
+    },
+    "period": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "raga": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "artist": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "visual_features": {
+      "gold_pigment_index": 15.71,
+      "mineral_red_index": 2.22,
+      "horizontal_symmetry": 0.816,
+      "vertical_symmetry": 0.677,
+      "focal_offset_x": 0.017,
+      "focal_offset_y": -0.087,
+      "texture_entropy": 1.99
+    },
+    "detected_motifs": [],
+    "llm_reasoning": {
+      "synthesis_rationale": "Out-of-Distribution Gate Rejection: The analyzed image achieved a similarity score of 0.118 against the 564 historical manuscript benchmark dataset, which is well below the authentication threshold of 0.22. This image is not recognized as an authentic Indian miniature painting.",
+      "stylistic_evidence": [
+        "Visual composition, lighting, and pigment profile do not conform to historical manuscript traditions."
+      ],
+      "iconographic_evidence": [
+        "Absence of classical Ragamala, Akbarnama, or Padshahnama iconography."
+      ],
+      "historical_evidence": [
+        "Specimen does not belong to any known Mughal, Rajasthani, or Pahari atelier."
+      ],
+      "cross_check": {
+        "agrees_with_classifiers": false,
+        "route_to_expert_review": false,
+        "review_reason": "Image automatically rejected by Out-Of-Distribution Gate."
+      }
+    }
+  },
+  {
+    "id": "analysis_1795583183684_014v5",
+    "createdAt": "2026-11-25T05:06:23.684Z",
+    "filename": "jack-anstey-XVoyX7l9ocY-unsplash_1795583111761.jpg",
+    "originalName": "jack-anstey-XVoyX7l9ocY-unsplash.jpg",
+    "imageUrl": "/uploads/jack-anstey-XVoyX7l9ocY-unsplash_1795583111761.jpg",
+    "is_miniature": false,
+    "verdict": "REJECTED: NOT AN INDIAN MINIATURE",
+    "is_mughal": false,
+    "confidence": 0,
+    "gate_score": 0.106,
+    "rejection_reason": "Image is Out-of-Distribution. Nearest-painting similarity (0.106) is below threshold (0.22). Not an Indian miniature painting.",
+    "school": {
+      "value": "Non-Miniature",
+      "confidence": 0,
+      "probabilities": {
+        "Mughal": 0,
+        "Rajasthani": 0,
+        "Pahari": 0
+      },
+      "evidence": [
+        "Image failed Out-Of-Distribution validation.",
+        "Image is Out-of-Distribution. Nearest-painting similarity (0.106) is below threshold (0.22). Not an Indian miniature painting."
+      ]
+    },
+    "period": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "raga": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "artist": {
+      "value": "N/A",
+      "confidence": 0,
+      "probabilities": {},
+      "evidence": [
+        "N/A - Non-miniature image rejected."
+      ]
+    },
+    "visual_features": {
+      "gold_pigment_index": 0.69,
+      "mineral_red_index": 0.25,
+      "horizontal_symmetry": 0.835,
+      "vertical_symmetry": 0.828,
+      "focal_offset_x": -0.025,
+      "focal_offset_y": -0.028,
+      "texture_entropy": 3.32
+    },
+    "detected_motifs": [],
+    "llm_reasoning": {
+      "synthesis_rationale": "Out-of-Distribution Gate Rejection: The analyzed image achieved a similarity score of 0.106 against the 564 historical manuscript benchmark dataset, which is well below the authentication threshold of 0.22. This image is not recognized as an authentic Indian miniature painting.",
+      "stylistic_evidence": [
+        "Visual composition, lighting, and pigment profile do not conform to historical manuscript traditions."
+      ],
+      "iconographic_evidence": [
+        "Absence of classical Ragamala, Akbarnama, or Padshahnama iconography."
+      ],
+      "historical_evidence": [
+        "Specimen does not belong to any known Mughal, Rajasthani, or Pahari atelier."
+      ],
+      "cross_check": {
+        "agrees_with_classifiers": false,
+        "route_to_expert_review": false,
+        "review_reason": "Image automatically rejected by Out-Of-Distribution Gate."
+      }
+    }
+  },
+  {
+    "id": "analysis_1795584582445_058ja",
+    "createdAt": "2026-11-25T05:29:42.445Z",
+    "filename": "images__1__1795584513204.jpg",
+    "originalName": "images (1).jpg",
+    "imageUrl": "/uploads/images__1__1795584513204.jpg",
+    "is_miniature": true,
+    "verdict": "YES, MUGHAL MINIATURE",
+    "is_mughal": true,
+    "confidence": 96.2,
+    "gate_score": 0.376,
+    "school": {
+      "value": "Mughal",
+      "confidence": 96.2,
+      "probabilities": {
+        "Mughal": 0.9621000289916992,
+        "Rajasthani": 0.03790000081062317
+      },
+      "evidence": [
+        "Delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume.",
+        "Atmospheric depth and Persian-influenced landscape registers with rocky crags and soft distant foliage.",
+        "Application of authentic gold illumination (detected pigment density: 29.69%).",
+        "Naturalistic drapery folds and individual portraiture contrasting with folk abstraction."
+      ]
+    },
+    "period": {
+      "value": "Classical Mughal (16th-17th Century)",
+      "confidence": 89.2,
+      "probabilities": {
+        "Akbar Period (c. 1556-1605)": 0.007799999788403511,
+        "Aurangzeb Period (c. 1658-1707)": 0.020899999886751175,
+        "Classical Mughal (16th-17th Century)": 0.8919000029563904,
+        "Jahangir Period (c. 1605-1627)": 0.056299999356269836,
+        "Late Mughal / 18th Century": 0.014700000174343586,
+        "Shah Jahan Period (c. 1628-1658)": 0.008299999870359898
+      },
+      "evidence": [
+        "Multi-head period classifier attributes composition to Classical Mughal (16th-17th Century) (89.2% confidence).",
+        "Standard imperial court workshop layout with classical miniature proportions."
+      ]
+    },
+    "raga": {
+      "value": "Non-Ragamala",
+      "confidence": 99,
+      "probabilities": {
+        "Non-Ragamala": 0.9897000193595886,
+        "Ragamala (Other)": 0.002400000113993883,
+        "Ragamala (Unspecified)": 0.004900000058114529,
+        "Shri Raga/Ragini": 0.002899999963119626
+      },
+      "evidence": [
+        "Secular court scene or narrative historical chronicle rather than musical iconography.",
+        "Absence of Dhyana musical emblems (such as Nayika with veena, peacocks, or deer)."
+      ]
+    },
+    "artist": {
+      "value": "Unknown",
+      "confidence": 100,
+      "probabilities": {
+        "Unknown": 1,
+        "Ustad Mansur": 0
+      },
+      "evidence": [
+        "Attributed to Unknown (100.0% confidence). Note: High uncertainty due to sparse individual artist signatures."
+      ]
+    },
+    "visual_features": {
+      "gold_pigment_index": 29.69,
+      "mineral_red_index": 7,
+      "horizontal_symmetry": 0.819,
+      "vertical_symmetry": 0.784,
+      "focal_offset_x": -0.009,
+      "focal_offset_y": -0.001,
+      "texture_entropy": 2.88
+    },
+    "detected_motifs": [
+      {
+        "label": "building",
+        "confidence": 0.33,
+        "bbox": [
+          0.011,
+          0.002,
+          1,
+          0.998
+        ]
+      },
+      {
+        "label": "pavilion",
+        "confidence": 0.27,
+        "bbox": [
+          0.008,
+          0.003,
+          1,
+          0.998
+        ]
+      }
+    ],
+    "llm_reasoning": {
+      "synthesis_rationale": "Based on calibrated multi-head visual embeddings, this painting is classified as Mughal (96.2% confidence). The rendering displays delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume. Combined with an estimated period attribution to Classical Mughal (16th-17th Century) (calibrated confidence: 89.2%), the visual evidence supports its authenticity within the imperial miniature corpus.",
+      "stylistic_evidence": [
+        "Delicate nim-qalam brushwork and fine stippled modeling creating subtle anatomical volume.",
+        "Atmospheric depth and Persian-influenced landscape registers with rocky crags and soft distant foliage.",
+        "Application of authentic gold illumination (detected pigment density: 29.69%).",
+        "Naturalistic drapery folds and individual portraiture contrasting with folk abstraction."
+      ],
+      "iconographic_evidence": [
+        "Secular court scene or narrative historical chronicle rather than musical iconography.",
+        "Absence of Dhyana musical emblems (such as Nayika with veena, peacocks, or deer)."
+      ],
+      "historical_evidence": [
+        "Multi-head period classifier attributes composition to Classical Mughal (16th-17th Century) (89.2% confidence).",
+        "Standard imperial court workshop layout with classical miniature proportions."
+      ],
+      "cross_check": {
+        "agrees_with_classifiers": true,
+        "route_to_expert_review": false,
+        "review_reason": null
+      }
+    }
   }
 ]

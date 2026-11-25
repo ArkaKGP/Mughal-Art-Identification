@@ -171,7 +171,7 @@ function MainApp() {
       }`}>
         <div className="max-w-4xl mx-auto px-4">
           <p className="font-regal font-bold text-sm mb-1 tracking-wider">
-            Bachelors Project: Indian Miniature Painting Authentication & Ragamala Analysis
+            Bachelors Project: Indian Mughal Miniature Painting Authentication & Ragamala Analysis
           </p>
           <p className="mb-3">
             Multi-Head ViT Backbone · YOLO-World Motif Detection · Temperature Calibration · Qwen 2.5-VL Multimodal Judge
